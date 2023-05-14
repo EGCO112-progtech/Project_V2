@@ -36,15 +36,18 @@ void scin(int &);
 void scin(string &);
 void scin(long &);
 void scin(double &);
+void scin(char &);
 void scin(int &, int &);
 void scin(string &, int &);
 void scin(long &, int &);
 void scin(double &, int &);
+void scin(char &, int &);
 
 void ask(int &choice, string text = "Number Input");
 void ask(string &choice, string text = "String Input");
 void ask(long &choice, string text = "Long Number Input");
 void ask(double &choice, string text = "Double Input");
+void ask(char &choice, string text = "Char Input");
 
 void add_stock();
 void delete_stock(int);
@@ -53,9 +56,9 @@ void edit_stock();
 
 #include "sorting.cpp"
 #include "Son_manip.cpp"
-
 /////////////////////////////////////////////
 int main(int argc, char **argv){
+    try{
     clear();
     int i;
     /////////////////////////////////////////
@@ -243,11 +246,23 @@ if(dev) cout << "--> 91 : Try bad_alloc" << endl;
         flag = 1;
     }   
     }while(choice != 9 || flag ==1); //exit program with 9 and no flag (0)
+    char save_choice;
+    ask(save_choice, "Do you want to save? (Y/N)");
+    if(save_choice == 'Y' || save_choice == 'y'){
     a.inserttonote(); // save food to txt
     b.inserttonote(); // save drinks to txt
     c.inserttonote(); // save dailyuse to txt
     d.inserttonote(); // save specificPurpose to txt
-    return 0;	
+    cout << "[!] Saved" << endl;
+    }
+    return 0;
+    }catch( exception &e ){
+    cin.clear();
+    cin.ignore(100,'\n');
+    clear();
+    if(dev) cout << "[Alert!] " << e.what() << endl;
+    else cout << "[!] File or Memmory corrupted" << endl;
+    }	
 }
 
 void clear() {
@@ -277,6 +292,10 @@ void scin(long &choice){
     if(cin.fail()) throw 0;
 }
 void scin(double &choice){
+    cin >> choice;
+    if(cin.fail()) throw 0;
+}
+void scin(char &choice){
     cin >> choice;
     if(cin.fail()) throw 0;
 }
@@ -366,6 +385,27 @@ void scin(double &choice, int &choice_check){
         choice_check = 1;
     }  
 }
+void scin(char &choice, int &choice_check){
+    try{
+    cin >> choice;
+    if(cin.fail()) {
+        throw 0;
+    }
+    }catch( exception &e ){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << e.what() << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+           } 
+    catch(...){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << "General Exception" << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+    }  
+}
 
 //Ask User
 void ask(int &choice, string text){
@@ -393,6 +433,14 @@ void ask(long &choice, string text){
     }while(ask_flag == 1);
 }
 void ask(double &choice, string text){
+    int ask_flag;
+    do{
+        ask_flag = 0;
+        cout << text << " : ";
+        scin(choice,ask_flag);
+    }while(ask_flag == 1);
+}
+void ask(char &choice, string text){
     int ask_flag;
     do{
         ask_flag = 0;

@@ -391,7 +391,7 @@ void LLFood::show_all(){
       cout << "[!] Food's data is empty." << endl;
       return;
      }
-     cout << endl << "=== Show Linkedlist Food ==" << endl;
+     cout << endl << "== Show Linkedlist Food ==" << endl;
       cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "      Name" << " | " << setw(7) << left << "  MFG" 
       << " | " << setw(7) << left << "  EXP" << " | " << setw(28) << left << "       Upadated Time" << " | "
       << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" << " | " << setw(8) << left 
@@ -401,7 +401,7 @@ void LLFood::show_all(){
                 cout << "" << endl;
                 if(t->move_next() != NULL) t = t->move_next();
      }
-     cout << "=== End of Show Linkedlist Food ==" << endl;
+     cout << "== End of Show Linkedlist Food ==" << endl;
 }
 void LLFood::add_node(food *&A){
 
@@ -473,7 +473,7 @@ void LLFood::inserttonote()
 {
       food *tmp = hol;
       int i;
-      save.open("stock_food_saved.txt");
+      save.open("stock_food.txt");
       for(i=0;i<size;i++)
       {
             if(dev) cout << "DATA " << i << " : " << tmp->save_data();
@@ -506,7 +506,7 @@ void LLDrinks::show_all(){
       cout << "[!] Drink's data is empty." << endl;
       return;
      }
-     cout << endl << "=== Show Linkedlist Drinks ==" << endl;
+     cout << endl << "== Show Linkedlist Drinks ==" << endl;
       cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "      Name" << " | " << setw(7) << left << "  MFG" 
       << " | " << setw(7) << left << "  EXP" << " | " << setw(28) << left << "       Upadated Time" << " | "
       << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" << " | " << setw(8) << left 
@@ -516,7 +516,7 @@ void LLDrinks::show_all(){
                 cout << "" << endl;
                 if(t->move_next() != NULL) t = t->move_next();
      }
-     cout << "=== End of Show Linkedlist Drinks ==" << endl;
+     cout << "== End of Show Linkedlist Drinks ==" << endl;
 }
 void LLDrinks::add_node(drinks *&A){
 
@@ -588,7 +588,7 @@ void LLDrinks::inserttonote()
 {
       drinks *tmp = hol;
       int i;
-      save.open("stock_drink_saved.txt");
+      save.open("stock_drink.txt");
       for(i=0;i<size;i++)
       {
             if(dev) cout << "DATA " << i << " : " << tmp->save_data();
@@ -620,7 +620,7 @@ void LLDai::show_all(){
       cout << "[!] DailyUse's data is empty." << endl;
       return;
      }
-     cout << endl << "=== Show Linkedlist DailyUse ==" << endl;
+     cout << endl << "== Show Linkedlist DailyUse ==" << endl;
       cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "      Name" << " | " << setw(7) << left << "  MFG" 
       << " | " << setw(7) << left << "  EXP" << " | " << setw(28) << left << "       Upadated Time" << " | " << setw(24) 
       << left << "        Use for" << " | " << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" 
@@ -630,7 +630,7 @@ void LLDai::show_all(){
                 cout << "" << endl;
                 if(t->move_next() != NULL) t = t->move_next();
      }
-     cout << "=== End of Show Linkedlist DailyUse ==" << endl;
+     cout << "== End of Show Linkedlist DailyUse ==" << endl;
 }
 void LLDai::add_node(dailyUse *&A){
 
@@ -702,7 +702,7 @@ void LLDai::inserttonote()
 {
       dailyUse *tmp = hol;
       int i;
-      save.open("stock_dailyuse_saved.txt");
+      save.open("stock_dailyuse.txt");
       for(i=0;i<size;i++)
       {
             if(dev) cout << "DATA " << i << " : " << tmp->save_data();
@@ -736,7 +736,7 @@ void LLSpec::show_all(){
       cout << "[!] SpecificPurpose's data is empty." << endl;
       return;
      }
-     cout << endl << "=== Show Linkedlist SpcPurpose ==" << endl;
+     cout << endl << "== Show Linkedlist SpcPurpose ==" << endl;
       cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "      Name" << " | " << setw(7) << left << "  MFG" 
       << " | " << setw(7) << left << "  EXP" << " | " << setw(28) << left << "       Upadated Time" << " | " << setw(24) 
       << left << "        Use for" << " | " << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" 
@@ -746,7 +746,7 @@ void LLSpec::show_all(){
                 cout << "" << endl;
                 if(t->move_next() != NULL) t = t->move_next();
      }
-     cout << "=== End of Show Linkedlist SpcPurpose ==" << endl;
+     cout << "== End of Show Linkedlist SpcPurpose ==" << endl;
 }
 void LLSpec::add_node(specificPurpose *&A){
 
@@ -822,7 +822,7 @@ void LLSpec::inserttonote()
 {
       specificPurpose *tmp = hol;
       int i;
-      save.open("stock_specificuse_saved.txt");
+      save.open("stock_specificuse.txt");
       for(i=0;i<size;i++)
       {
             if(dev) cout << "DATA " << i << " : " << tmp->save_data();

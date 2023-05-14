@@ -10,16 +10,25 @@ using namespace std;
 #include "NodeLL.h"
 
 void sorting_function() {
+     clear();
+     int flag, s_flag;
      int sorting_choice,dailyuse_sorting_choice,drink_sorting_choice,food_sorting_choice,specific_sorting_choice; 
+     do{
+        try{
+     flag = 0;
      cout << "== Please Insert The Type of Product to Sorting == " << endl;
      cout << "--> 1) Food Product " << endl;
      cout << "--> 2) Drinks Product " << endl;
      cout << "--> 3) Daily Use Product " << endl;
      cout << "--> 4) Specific Use Product " << endl; 
      cout << "--> 5) Go Back To Menu " << endl;
-     cout << "--> Enter Your Choice : "; cin >> sorting_choice; 
+     cout << "--> Enter Your Choice : "; scin(sorting_choice); 
      switch(sorting_choice) {
         case 1: //Food
+           clear();
+           do{
+            try{
+           s_flag = 0;
            cout << "== Food Product Sorting Program == " << endl; 
            cout << "--> 1) Sorting by Node ID ?" << endl;
            cout << "--> 2) Sorting by MFD ?" << endl; 
@@ -27,22 +36,43 @@ void sorting_function() {
            cout << "--> 4) Sorting by Weight ? " << endl;
            cout << "--> 5) Go Back To Menu " << endl;
            cout << "--> Enter Your Choice : ";
-           cin >> food_sorting_choice;
+           scin(food_sorting_choice);
            switch(food_sorting_choice) {
-               case 1:  a.sorting_by_NodeID();
+               case 1:  a.sorting_by_NodeID(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 2:  a.sorting_by_mfd(); 
+               case 2:  a.sorting_by_mfd(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 3:  a.sorting_by_exp();
+               case 3:  a.sorting_by_exp(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 4:  a.sorting_by_weight(); 
+               case 4:  a.sorting_by_weight(); clear(); cout << "[!] Command executed" << endl; 
                  break;
                default: clear();
                  break;
            }
-
+            }catch( exception &e ){
+            cin.clear();
+            cin.ignore(100,'\n');
+            clear();
+            if(dev) cout << "[Alert!] " << e.what() << endl;
+            else cout << "[!] Input format error please try again." << endl;
+            s_flag = 1;
+            } 
+            catch(...){
+            cin.clear();
+            cin.ignore(100,'\n');
+            clear();
+            if(dev) cout << "[Alert!] " << "General Exception" << endl;
+            else cout << "[!] Input format error please try again." << endl;
+            s_flag = 1;
+            }   
+           }while(s_flag == 1 || food_sorting_choice != 5);
         break;
+
         case 2: //Drink
+           clear();
+           do{
+            try{
+           s_flag = 0;
            cout << "== Drinks Product Sorting Program == " << endl;
            cout << "--> 1) Sorting by Node ID ?" << endl;
            cout << "--> 2) Sorting by MFD ?" << endl; 
@@ -51,23 +81,45 @@ void sorting_function() {
            cout << "--> 5) Sorting by Volume of Drink ? " << endl;
            cout << "--> 6) Go Back To Menu " << endl;
            cout << "--> Enter Your Choice : ";
-           cin >> drink_sorting_choice;
+           scin(drink_sorting_choice);
            switch(drink_sorting_choice) {
-               case 1: b.sorting_by_NodeID(); 
+               case 1: b.sorting_by_NodeID(); clear(); cout << "[!] Command executed" << endl; 
                  break;
-               case 2:  b.sorting_by_mfd();
+               case 2:  b.sorting_by_mfd(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 3:  b.sorting_by_exp();
+               case 3:  b.sorting_by_exp(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 4: b.sorting_by_weight();
+               case 4: b.sorting_by_weight(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 5: b.sorting_by_volume(); 
+               case 5: b.sorting_by_volume(); clear(); cout << "[!] Command executed" << endl; 
                  break;
                default: clear();
                  break;
            }
+            }catch( exception &e ){
+            cin.clear();
+            cin.ignore(100,'\n');
+            clear();
+            if(dev) cout << "[Alert!] " << e.what() << endl;
+            else cout << "[!] Input format error please try again." << endl;
+            s_flag = 1;
+            } 
+            catch(...){
+            cin.clear();
+            cin.ignore(100,'\n');
+            clear();
+            if(dev) cout << "[Alert!] " << "General Exception" << endl;
+            else cout << "[!] Input format error please try again." << endl;
+            s_flag = 1;
+            }   
+           }while(s_flag == 1 || drink_sorting_choice != 6);
         break;
+
         case 3: //DailyUse
+           clear();
+           do{
+            try{
+           s_flag = 0;
            cout << "== Daily Use Product Sorting Program == " << endl; 
            cout << "--> 1) Sorting by Node ID ?" << endl;
            cout << "--> 2) Sorting by MFD ?" << endl; 
@@ -75,21 +127,43 @@ void sorting_function() {
            cout << "--> 4) Sorting by Weight ? " << endl;
            cout << "--> 5) Go Back To Menu " << endl;
            cout << "--> Enter Your Choice : ";
-           cin >> dailyuse_sorting_choice;
+           scin(dailyuse_sorting_choice);
            switch(dailyuse_sorting_choice) {
-               case 1: c.sorting_by_NodeID(); 
+               case 1: c.sorting_by_NodeID(); clear(); cout << "[!] Command executed" << endl; 
                  break;
-               case 2: c.sorting_by_mfd();
+               case 2: c.sorting_by_mfd(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 3: c.sorting_by_exp();
+               case 3: c.sorting_by_exp(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 4: c.sorting_by_weight();
+               case 4: c.sorting_by_weight(); clear(); cout << "[!] Command executed" << endl;
                  break;
                default: clear();
                  break;
            }
+            }catch( exception &e ){
+            cin.clear();
+            cin.ignore(100,'\n');
+            clear();
+            if(dev) cout << "[Alert!] " << e.what() << endl;
+            else cout << "[!] Input format error please try again." << endl;
+            s_flag = 1;
+            } 
+            catch(...){
+            cin.clear();
+            cin.ignore(100,'\n');
+            clear();
+            if(dev) cout << "[Alert!] " << "General Exception" << endl;
+            else cout << "[!] Input format error please try again." << endl;
+            s_flag = 1;
+            }   
+           }while(s_flag == 1 || dailyuse_sorting_choice != 5);
         break;
+
         case 4: //Specific Use 
+           clear();
+           do{
+            try{
+           s_flag = 0;
            cout << "== Specific Use Product Sorting Program == " << endl; 
            cout << "--> 1) Sorting by Node ID ?" << endl;
            cout << "--> 2) Sorting by MFD ?" << endl; 
@@ -97,22 +171,57 @@ void sorting_function() {
            cout << "--> 4) Sorting by Weight ? " << endl;
            cout << "--> 5) Go Back To Menu " << endl;
            cout << "--> Enter Your Choice : ";
-           cin >> specific_sorting_choice;
+           scin(specific_sorting_choice);
            switch(specific_sorting_choice) {
-               case 1: d.sorting_by_NodeID(); 
+               case 1: d.sorting_by_NodeID(); clear(); cout << "[!] Command executed" << endl; 
                  break;
-               case 2: d.sorting_by_mfd();
+               case 2: d.sorting_by_mfd(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 3: d.sorting_by_exp();
+               case 3: d.sorting_by_exp(); clear(); cout << "[!] Command executed" << endl;
                  break;
-               case 4: d.sorting_by_weight();
+               case 4: d.sorting_by_weight(); clear(); cout << "[!] Command executed" << endl;
                  break;
                default: clear(); 
                  break;
            }
+            }catch( exception &e ){
+            cin.clear();
+            cin.ignore(100,'\n');
+            clear();
+            if(dev) cout << "[Alert!] " << e.what() << endl;
+            else cout << "[!] Input format error please try again." << endl;
+            s_flag = 1;
+            } 
+            catch(...){
+            cin.clear();
+            cin.ignore(100,'\n');
+            clear();
+            if(dev) cout << "[Alert!] " << "General Exception" << endl;
+            else cout << "[!] Input format error please try again." << endl;
+            s_flag = 1;
+            }   
+           }while(s_flag == 1 || specific_sorting_choice != 5);
         break;
+
         default : clear();
      }
+        }catch( exception &e ){
+        cin.clear();
+        cin.ignore(100,'\n');
+        clear();
+        if(dev) cout << "[Alert!] " << e.what() << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        flag = 1;
+           } 
+    catch(...){
+        cin.clear();
+        cin.ignore(100,'\n');
+        clear();
+        if(dev) cout << "[Alert!] " << "General Exception" << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        flag = 1;
+    }   
+   }while(flag == 1 || sorting_choice != 5);
 }
 
 //Convert String MFD and EXP to Integer

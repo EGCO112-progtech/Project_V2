@@ -82,9 +82,9 @@ void add_stock(){
 		flag = 0;
 		cout<<"Please select the category you wish to add"<<endl;
 		cout<<"1 : Food"<<endl;
-		cout<<"2 : Drink"<<endl;
-		cout<<"3 : Daily use"<<endl;
-		cout<<"4 : Special Appliance"<<endl;
+		cout<<"2 : Drinks"<<endl;
+		cout<<"3 : Daily Use Product"<<endl;
+		cout<<"4 : Specific Use Product"<<endl;
 		cout<<"5 : Back"<<endl;
 		cout << "Input number : "; scin(add_choice);
 		
@@ -117,9 +117,9 @@ void show_delete_stock(){
 	flag = 0;
 	cout<<"Please select the category you wish to delete"<<endl;
 	cout<<"1 : Food"<<endl;
-	cout<<"2 : Drink"<<endl;
-	cout<<"3 : Daily use"<<endl;
-	cout<<"4 : Special Appliance"<<endl;
+	cout<<"2 : Drinks"<<endl;
+	cout<<"3 : Daily Use Product"<<endl;
+	cout<<"4 : Specific Use Product"<<endl;
 	cout<<"5 : Back"<<endl;
 	cout << "Input number : "; scin(add_choice);
 
@@ -213,9 +213,9 @@ void edit_stock(){
 		flag = 0;
 	cout<<"Please select the category you wish to delete"<<endl;
 	cout<<"1 : Food"<<endl;
-	cout<<"2 : Drink"<<endl;
-	cout<<"3 : Daily use"<<endl;
-	cout<<"4 : Special Appliance"<<endl;
+	cout<<"2 : Drinks"<<endl;
+	cout<<"3 : Daily Use Product"<<endl;
+	cout<<"4 : Specific Use Product"<<endl;
 	cout<<"5 : Back"<<endl;
 	cout << "Input number : "; scin(add_choice);
 
