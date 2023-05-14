@@ -121,6 +121,7 @@ int main(int argc, char **argv){
         cout << "--> 9 : Exit" << endl;
         cout << "--> 99 : Then type: \"dev\" to switch developer mode" << endl;
 if(dev) cout << "--> 91 : Try bad_alloc" << endl;
+if(dev) cout << "--> 92 : Try remove ALL stock files" << endl;
 
         cout << "Input number : "; scin(choice);
 
@@ -151,7 +152,8 @@ if(dev) cout << "--> 91 : Try bad_alloc" << endl;
                     s = new specificPurpose(name,mfg,expire,LotNo,Usefor,weightAll,quantityContainer,quantityEach,details);  d.add_node(s); 
                 }
                 RS.close();
-                cout << "[!] Data has been loaded." << endl;
+                if(RF.fail() || RD.fail() || RDA.fail() || RS.fail()){ cout << "[!] Files can't be loaded." << endl;}
+                else cout << "[!] Data has been loaded." << endl;
                 break;
             case 2 : //Showall
                     clear();
@@ -226,6 +228,16 @@ if(dev) cout << "--> 91 : Try bad_alloc" << endl;
                 }
             } else choice = 0; 
             clear(); break;
+            case 92 : 
+            if(dev){
+                remove("stock_food.txt");
+                remove("stock_drink.txt");
+                remove("stock_dailyuse.txt");
+                remove("stock_specificuse.txt");
+                clear();
+                cout << "[!] All Stock Data has been removed." << endl;
+            } else choice = 0; 
+            break;
             default : clear();
         }
     }
