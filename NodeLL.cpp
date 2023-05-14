@@ -132,10 +132,6 @@ food:: ~food(){
       }
 }
 void food:: show_data(){
-      cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "Name" << " | " << setw(7) << left << "MFG" 
-           << " | " << setw(7) << left << "EXP" << " | " << setw(28) << left << "Upadated Time" << " | "
-           << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" << " | " << setw(8) << left 
-           << "Qty Each" << " | " << setw(7) << left << "Kg Each" << " |" << endl;
       NODE::show_data();
       general::show_data();
       consumable::show_data();
@@ -189,10 +185,6 @@ drinks:: ~drinks(){
       }
 }
 void drinks:: show_data(){
-      cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "Name" << " | " << setw(7) << left << "MFG" 
-      << " | " << setw(7) << left << "EXP" << " | " << setw(28) << left << "Upadated Time" << " | "
-      << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" << " | " << setw(8) << left 
-      << "Qty Each" << " | " << setw(7) << left << "mL Each" << " |" << endl;
       NODE::show_data();
       general::show_data();
       consumable::show_data();
@@ -265,7 +257,7 @@ void  appliance:: show_data(){
       cout << "quantityContainer @ appliance : " << quantityContainer << endl;
       cout << "quantityEach @ appliance : " << quantityEach << endl;
       }
-      cout << setw(24) << left << Usefor << " | " << setw(4) << left << weightAll << " | " << setw(4) << left << quantityContainer << " | " << setw(4) << left << quantityEach << " | ";
+      cout << setw(24) << left << Usefor << " | " << setw(6) << left << weightAll << " | " << setw(7) << left << quantityContainer << " | " << setw(8) << left << quantityEach << " | ";
 }
 
 
@@ -282,10 +274,6 @@ dailyUse:: ~dailyUse(){
       }
 }
 void dailyUse:: show_data(){
-      cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "Name" << " | " << setw(7) << left << "MFG" 
-           << " | " << setw(7) << left << "EXP" << " | " << setw(28) << left << "Upadated Time" << " | " << setw(24) 
-           << left << "Use for" << " | " << setw(4) << left << "Kg All" << " | " << setw(4) << left << "Qty All" 
-           << " | " << setw(4) << left << "Qty Each" << " | " << setw(24) << left << "Datails" << " |" << endl;
       NODE::show_data();
       general::show_data();
       appliance::show_data();
@@ -339,10 +327,6 @@ specificPurpose:: ~specificPurpose(){
       }
 }
 void  specificPurpose:: show_data(){
-      cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "Name" << " | " << setw(7) << left << "MFG" 
-           << " | " << setw(7) << left << "EXP" << " | " << setw(28) << left << "Upadated Time" << " | " << setw(24) 
-           << left << "Use for" << " | " << setw(4) << left << "Kg All" << " | " << setw(4) << left << "Qty All" 
-           << " | " << setw(4) << left << "Qty Each" << " | " << setw(24) << left << "Caution"<< " |" << endl;
       NODE::show_data(); 
       general::show_data();
       appliance::show_data();
@@ -408,6 +392,10 @@ void LLFood::show_all(){
       return;
      }
      cout << endl << "=== Show Linkedlist Food ==" << endl;
+      cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "      Name" << " | " << setw(7) << left << "  MFG" 
+      << " | " << setw(7) << left << "  EXP" << " | " << setw(28) << left << "       Upadated Time" << " | "
+      << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" << " | " << setw(8) << left 
+      << "Qty Each" << " | " << setw(7) << left << "Kg Each" << " |" << endl;
      for(i=0;i<size;i++){
                 t->show_data();
                 cout << "" << endl;
@@ -519,6 +507,10 @@ void LLDrinks::show_all(){
       return;
      }
      cout << endl << "=== Show Linkedlist Drinks ==" << endl;
+      cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "      Name" << " | " << setw(7) << left << "  MFG" 
+      << " | " << setw(7) << left << "  EXP" << " | " << setw(28) << left << "       Upadated Time" << " | "
+      << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" << " | " << setw(8) << left 
+      << "Qty Each" << " | " << setw(7) << left << "mL Each" << " |" << endl;
      for(i=0;i<size;i++){
                 t->show_data();
                 cout << "" << endl;
@@ -629,6 +621,10 @@ void LLDai::show_all(){
       return;
      }
      cout << endl << "=== Show Linkedlist DailyUse ==" << endl;
+      cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "      Name" << " | " << setw(7) << left << "  MFG" 
+      << " | " << setw(7) << left << "  EXP" << " | " << setw(28) << left << "       Upadated Time" << " | " << setw(24) 
+      << left << "        Use for" << " | " << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" 
+      << " | " << setw(8) << left << "Qty Each" << " | " << setw(24) << left << "        Datails" << " |" << endl;
      for(i=0;i<size;i++){
                 t->show_data();
                 cout << "" << endl;
@@ -741,6 +737,10 @@ void LLSpec::show_all(){
       return;
      }
      cout << endl << "=== Show Linkedlist SpcPurpose ==" << endl;
+      cout << "| " << setw(6) << left << "NodeID" << " | " << setw(16) << left << "      Name" << " | " << setw(7) << left << "  MFG" 
+      << " | " << setw(7) << left << "  EXP" << " | " << setw(28) << left << "       Upadated Time" << " | " << setw(24) 
+      << left << "        Use for" << " | " << setw(6) << left << "Kg All" << " | " << setw(7) << left << "Qty All" 
+      << " | " << setw(8) << left << "Qty Each" << " | " << setw(24) << left << "        Caution"<< " |" << endl;
      for(i=0;i<size;i++){
                 t->show_data();
                 cout << "" << endl;

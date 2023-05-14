@@ -119,8 +119,7 @@ int main(int argc, char **argv){
         cout << "--> 99 : Then type: \"dev\" to switch developer mode" << endl;
 if(dev) cout << "--> 91 : Try bad_alloc" << endl;
 
-        ask(choice, "Input number");
-        //cout << "Input number : "; scin(choice);
+        cout << "Input number : "; scin(choice);
 
         switch(choice){
             case 1 : //Load data
@@ -162,14 +161,14 @@ if(dev) cout << "--> 91 : Try bad_alloc" << endl;
 			case 3 : //Manipulate data
 					clear();
 					do{
+                        try{
 						s_flag = flag = 0;
 						cout<<"Please select command"<<endl;
 						cout<<"1 : Add stock"<<endl;
 						cout<<"2 : Delete stock"<<endl;
 						cout<<"3 : Edit stock"<<endl;
 						cout<<"4 : Back to main menu"<<endl;
-                        ask(s_choice, "Input number");
-						//cout<<"Input number : "; scin(s_choice);
+                        cout << "Input number : "; scin(s_choice);
 						
 						switch(s_choice){
 							case 1 :
@@ -187,10 +186,25 @@ if(dev) cout << "--> 91 : Try bad_alloc" << endl;
 								s_flag=1;
 								break;
 							default :
-								s_flag=1;
+								//s_flag=1;
 								clear();
 						}
-		
+                        }catch( exception &e ){
+                        cin.clear();
+                        cin.ignore(100,'\n');
+                        clear();
+                        if(dev) cout << "[Alert!] " << e.what() << endl;
+                        else cout << "[!] Input format error please try again." << endl;
+                        flag = 1;
+                        } 
+    	                catch(...){
+                        cin.clear();
+                        cin.ignore(100,'\n');
+                        clear();
+                        if(dev) cout << "[Alert!] " << "General Exception" << endl;
+                        else cout << "[!] Input format error please try again." << endl;
+                        flag = 1;
+    	                }   
 					}while(s_choice != 4 && s_flag == 0 || flag == 1);
 					break;
             case 4: sorting_function(); break;
