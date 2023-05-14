@@ -115,7 +115,7 @@ int main(int argc, char **argv){
         if(dev) cout << "[!] Developer Mode" << endl;
         cout << "== Please select command ==" << endl;
         cout << "--> 1 : Load data" << endl;
-        cout << "--> 2 : Showall" << endl;
+        cout << "--> 2 : Show All Data" << endl;
 		cout << "--> 3 : Add , Delete , Edit your stock" << endl;
         cout << "--> 4 : Sorting Your Stock " << endl;
         cout << "--> 9 : Exit" << endl;
