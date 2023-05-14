@@ -31,29 +31,25 @@ class NODE {
         long NodeID;
     public:
         NODE();
-        //~NODE();
-        //void show_data();
         virtual ~NODE() = 0;
         virtual void show_data() = 0;
-        //void insert(NODE*&);
-        //NODE* move_next();
-		
-		
-		//node* move_next();
 };
+
+
 /*general*/
 class general:public NODE{
     private:
     protected:
         long LotID, LotNo;
         string name;
-        string mfg, exp;
+        string mfg, expire;
         string updateTime;
     public:
         general(string = "No Name", string = "No MFG", string = "No EXP", long = 0);
         virtual ~general() = 0;
         virtual void show_data() = 0;;
 };
+
 
 /*consumable: general*/
 class consumable:public general{
@@ -66,6 +62,8 @@ class consumable:public general{
         virtual ~consumable() = 0;
         virtual void show_data() = 0;
 };
+
+
 /*food:consumable*/
 class food:public consumable{
     private:
@@ -85,8 +83,10 @@ class food:public consumable{
         double return_weightAll();
         string return_mfg();
         string return_exp();
-		//long re_NodeID();
+        string save_data();
 };
+
+
 /*drinks: consumable*/
 class drinks:public consumable{
     private:
@@ -107,8 +107,9 @@ class drinks:public consumable{
         double return_volumeAll();  
         string return_mfg();
         string return_exp();      
-		//long re_NodeID();
+		string save_data();
 };
+
 
 /*appliance: general*/
 class appliance:public general{
@@ -122,11 +123,11 @@ class appliance:public general{
         virtual ~appliance() = 0;
         virtual void show_data() = 0;
         appliance* move_next();
-		//Son code
 		int return_NodeID();
 		void edit_NodeID(int);
-		//long re_NodeID();
 };
+
+
 /*dailyUse: appliance*/
 class dailyUse:public appliance{
     private:
@@ -139,15 +140,16 @@ class dailyUse:public appliance{
         void show_data();
         void insert(dailyUse *&);
         dailyUse* move_next();
-		//Son code
 		int return_NodeID();
 		void edit_NodeID(int);
 		void set_next(dailyUse *);
         double return_weightAll();
         string return_mfg();
         string return_exp();
-		//long re_NodeID();
+		string save_data();
 };
+
+
 /*specificPurpose: appliance*/
 class specificPurpose:public appliance{
     private:
@@ -160,21 +162,21 @@ class specificPurpose:public appliance{
         void show_data();
         void insert( specificPurpose*&);
         specificPurpose* move_next();
-		//Son code
 		int return_NodeID();
 		void edit_NodeID(int);
 		void set_next(specificPurpose *);
         double return_weightAll();
         string return_mfg();
         string return_exp();
-		//long re_NodeID();
+		string save_data();
 };
 /*
+// Variable in each class //
 food{
         long NodeID;
         long LotID, LotNo;
         string name;
-        string mfg, exp;
+        string mfg, expire;
         string updateTime;
         double weightAll;
         int quantityContainer, quantityEach;
@@ -184,7 +186,7 @@ drinks{
         long NodeID;
         long LotID, LotNo;
         string name;
-        string mfg, exp;
+        string mfg, expire;
         string updateTime;
         double weightAll;
         int quantityContainer, quantityEach;
@@ -194,7 +196,7 @@ dailyUse{
         long NodeID;
         long LotID, LotNo;
         string name;
-        string mfg, exp;
+        string mfg, expire;
         string updateTime;
         string Usefor;
         double weightAll;
@@ -205,7 +207,7 @@ specificPurpose{
         long NodeID;
         long LotID, LotNo;
         string name;
-        string mfg, exp;
+        string mfg, expire;
         string updateTime;
         string Usefor;
         double weightAll;
@@ -213,7 +215,10 @@ specificPurpose{
         string caution;
 }
 */
+
+
 // <------------- LL ------------->
+
 /*LLFood*/
 class LLFood{
       food *hol;
@@ -232,7 +237,10 @@ public:
        void sorting_by_mfd();
        void sorting_by_exp();
        void sorting_by_weight();
+       void inserttonote();
 };
+
+
 /*LLDrinks*/
 class LLDrinks{
       drinks *hol;
@@ -252,7 +260,9 @@ public:
        void sorting_by_exp();
        void sorting_by_weight();
        void sorting_by_volume();
+       void inserttonote();
 };
+
 
 /*LLDai*/
 class LLDai{
@@ -272,7 +282,10 @@ public:
        void sorting_by_mfd();
        void sorting_by_exp();
        void sorting_by_weight();
+       void inserttonote();
 };
+
+
 /*LLSpec*/
 class LLSpec{
       specificPurpose *hol;
@@ -291,6 +304,7 @@ public:
        void sorting_by_mfd();
        void sorting_by_exp();
        void sorting_by_weight();
+       void inserttonote();
 };
 
 #endif

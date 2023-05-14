@@ -3,18 +3,21 @@
 
 //Son code
 void choice_insert_func() {
+	int flag;
 	switch(add_choice){
 			case 1 :
-				cout<<"Enter name : "; cin>>name;
-				cout<<"Enter mfg : "; cin>>mfg;
-				cout<<"Enter exp : "; cin>>exp;
-				case1_LotNo:
-				cout<<"Enter LotNo : "; cin>>LotNo;
+				ask(name,"Enter name");
+				//cout<<"Enter name : "; scin(name);
+				cout<<"Enter mfg : "; scin(mfg);
+				cout<<"Enter expire : "; scin(expire);
+				ask(LotNo,"Enter LotNo");
+				/*case1_LotNo:
+				cout<<"Enter LotNo : "; scin(LotNo);
 				if(cin.fail()) {
 					cin.clear();
 					cin.ignore(50,'\n');
 					goto case1_LotNo;
-				}
+				}*/
 				
 				case1_weightAll:
 				cout<<"Enter weightAll : "; cin>>weightAll;
@@ -48,14 +51,14 @@ void choice_insert_func() {
 					goto case1_weightEach;
 				}
 				
-				f = new food(name,mfg,exp,LotNo,weightAll,quantityContainer,quantityEach,weightEach);
+				f = new food(name,mfg,expire,LotNo,weightAll,quantityContainer,quantityEach,weightEach);
 				a.add_node(f);
 				break;
 				//return;
 			case 2 :
 				cout<<"Enter name : "; cin>>name;
 				cout<<"Enter mfg : "; cin>>mfg;
-				cout<<"Enter exp : "; cin>>exp;
+				cout<<"Enter expire : "; cin>>expire;
 				case2_LotNo:
 				cout<<"Enter LotNo : "; cin>>LotNo;
 				if(cin.fail()) {
@@ -96,13 +99,13 @@ void choice_insert_func() {
 					goto case2_volumeEach;
 				}
 				
-				dr = new drinks(name,mfg,exp,LotNo,weightAll,quantityContainer,quantityEach,volumeEach);
+				dr = new drinks(name,mfg,expire,LotNo,weightAll,quantityContainer,quantityEach,volumeEach);
 				b.add_node(dr);
 				break;
 			case 3 :
 				cout<<"Enter name : "; cin>>name;
 				cout<<"Enter mfg : "; cin>>mfg;
-				cout<<"Enter exp : "; cin>>exp;
+				cout<<"Enter expire : "; cin>>expire;
 				case3_LotNo:
 				cout<<"Enter LotNo : "; cin>>LotNo;
 				if(cin.fail()) {
@@ -139,13 +142,13 @@ void choice_insert_func() {
 				
 				cout<<"Enter caution : "; cin>>caution;
 				
-				da = new dailyUse(name,mfg,exp,LotNo,Usefor,weightAll,quantityContainer,quantityEach,caution);
+				da = new dailyUse(name,mfg,expire,LotNo,Usefor,weightAll,quantityContainer,quantityEach,caution);
 				c.add_node(da);
 				break;
 			case 4 :
 				cout<<"Enter name : "; cin>>name;
 				cout<<"Enter mfg : "; cin>>mfg;
-				cout<<"Enter exp : "; cin>>exp;
+				cout<<"Enter expire : "; cin>>expire;
 				case4_LotNo:
 				cout<<"Enter LotNo : "; cin>>LotNo;
 				if(cin.fail()) {
@@ -182,7 +185,7 @@ void choice_insert_func() {
 				
 				cout<<"Enter details : "; cin>>details;
 				
-				s = new specificPurpose(name,mfg,exp,LotNo,Usefor,weightAll,quantityContainer,quantityEach,details);
+				s = new specificPurpose(name,mfg,expire,LotNo,Usefor,weightAll,quantityContainer,quantityEach,details);
 				d.add_node(s);
 				break;
 			default : clear();

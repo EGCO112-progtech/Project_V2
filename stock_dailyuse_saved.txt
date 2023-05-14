@@ -1,0 +1,5 @@
+softener 08/2014 04/2025 548203 decreaseunpleasantsmell 35.000000 10 4 dangerforeating
+sunlight 09/2013 03/2020 587469 cleaningtheplate 48.000000 20 10 takeawayfromchildren
+bodyshower 11/2003 07/2015 123456 bodycleaning 30.000000 19 3 don'tstoreinhightemparature
+shampoo 05/2000 10/2016 843126 cleaninghair 25.000000 16 3 don'tstoreinhightemparature
+toothbrush 06/2005 04/2025 452136 useforcleanupyourmouth 30.000000 12 5 don'tkeepinhightemparature

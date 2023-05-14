@@ -19,7 +19,7 @@ food *f;  drinks *dr; dailyUse *da; specificPurpose *s;
 long NodeID;
 long LotID, LotNo;
 string name;
-string mfg, exp;
+string mfg, expire;
 string updateTime;
 string Usefor;
 string caution;
@@ -31,7 +31,21 @@ int s_choice = 0, add_choice,s_flag=0;
 ////////////////////////////////////////
 //function
 void clear();
-//Son code
+
+void scin(int &);
+void scin(string &);
+void scin(long &);
+void scin(double &);
+void scin(int &, int &);
+void scin(string &, int &);
+void scin(long &, int &);
+void scin(double &, int &);
+
+void ask(int &choice, string text = "Number Input");
+void ask(string &choice, string text = "String Input");
+void ask(long &choice, string text = "Long Number Input");
+void ask(double &choice, string text = "Double Input");
+
 void add_stock();
 void delete_stock(int);
 void show_delete_stock();
@@ -90,9 +104,11 @@ int main(int argc, char **argv){
     RS.close();//fclose()
     ///////////////////////////////////////////////////////
         
-    int choice = 0;
+    int choice = 0, flag;
     string extra; // use to accept developer's password
     do{
+        try{
+        flag = 0;
         if(dev) cout << "[!] Developer Mode" << endl;
         cout << "== Please select command ==" << endl;
         cout << "--> 1 : Load data" << endl;
@@ -101,40 +117,36 @@ int main(int argc, char **argv){
         cout << "--> 4 : Sorting Your Stock " << endl;
         cout << "--> 9 : Exit" << endl;
         cout << "--> 99 : Then type: \"dev\" to switch developer mode" << endl;
+if(dev) cout << "--> 91 : Try bad_alloc" << endl;
 
-        user_choices:
-        cout << "Input number : "; cin >> choice;
-        if(cin.fail()) {
-            cin.clear();
-            cin.ignore(50,'\n');
-            goto user_choices;
-        }
+        ask(choice, "Input number");
+        //cout << "Input number : "; scin(choice);
 
         switch(choice){
             case 1 : //Load data
                 clear();
                 RF.open("stock_food.txt");
-                while(RF>>name>>mfg>>exp>>LotNo>>weightAll>>quantityContainer>>quantityEach>>weightEach)/*collect food*/
+                while(RF>>name>>mfg>>expire>>LotNo>>weightAll>>quantityContainer>>quantityEach>>weightEach)/*collect food*/
                 {
-                    f = new food(name,mfg,exp,LotNo,weightAll,quantityContainer,quantityEach,weightEach);             a.add_node(f);
+                    f = new food(name,mfg,expire,LotNo,weightAll,quantityContainer,quantityEach,weightEach);             a.add_node(f);
                 }
                 RF.close();
                 RD.open("stock_drink.txt");
-                while(RD>>name>>mfg>>exp>>LotNo>>weightAll>>quantityContainer>>quantityEach>>volumeEach)/*collect drink*/
+                while(RD>>name>>mfg>>expire>>LotNo>>weightAll>>quantityContainer>>quantityEach>>volumeEach)/*collect drink*/
                 {
-                    dr = new drinks(name,mfg,exp,LotNo,weightAll,quantityContainer,quantityEach,volumeEach);           b.add_node(dr);
+                    dr = new drinks(name,mfg,expire,LotNo,weightAll,quantityContainer,quantityEach,volumeEach);           b.add_node(dr);
                 }  
                 RD.close();
                 RDA.open("stock_dailyuse.txt");
-                while(RDA>>name>>mfg>>exp>>LotNo>>Usefor>>weightAll>>quantityContainer>>quantityEach>>caution)/*collect dailyUse*/
+                while(RDA>>name>>mfg>>expire>>LotNo>>Usefor>>weightAll>>quantityContainer>>quantityEach>>caution)/*collect dailyUse*/
                 {
-                    da = new dailyUse(name,mfg,exp,LotNo,Usefor,weightAll,quantityContainer,quantityEach,caution);    c.add_node(da);
+                    da = new dailyUse(name,mfg,expire,LotNo,Usefor,weightAll,quantityContainer,quantityEach,caution);    c.add_node(da);
                 }
                 RDA.close();                  
                 RS.open("stock_specificuse.txt");
-                while(RS>>name>>mfg>>exp>>LotNo>>Usefor>>weightAll>>quantityContainer>>quantityEach>>details)/*collect specificPurpose*/
+                while(RS>>name>>mfg>>expire>>LotNo>>Usefor>>weightAll>>quantityContainer>>quantityEach>>details)/*collect specificPurpose*/
                 {
-                    s = new specificPurpose(name,mfg,exp,LotNo,Usefor,weightAll,quantityContainer,quantityEach,details);  d.add_node(s); 
+                    s = new specificPurpose(name,mfg,expire,LotNo,Usefor,weightAll,quantityContainer,quantityEach,details);  d.add_node(s); 
                 }
                 RS.close();
                 cout << "[!] Data has been loaded." << endl;
@@ -150,13 +162,14 @@ int main(int argc, char **argv){
 			case 3 : //Manipulate data
 					clear();
 					do{
-						s_flag = 0;
+						s_flag = flag = 0;
 						cout<<"Please select command"<<endl;
 						cout<<"1 : Add stock"<<endl;
 						cout<<"2 : Delete stock"<<endl;
 						cout<<"3 : Edit stock"<<endl;
 						cout<<"4 : Back to main menu"<<endl;
-						cout<<"Input number : "; cin >> s_choice;
+                        ask(s_choice, "Input number");
+						//cout<<"Input number : "; scin(s_choice);
 						
 						switch(s_choice){
 							case 1 :
@@ -178,29 +191,198 @@ int main(int argc, char **argv){
 								clear();
 						}
 		
-					}while(s_choice != 4 && s_flag == 0);
+					}while(s_choice != 4 && s_flag == 0 || flag == 1);
 					break;
             case 4: sorting_function(); break;
             case 99 :
-                    cin >> extra;
+                    ask(extra, "Password");
                     if(extra == "dev") dev = !dev;
                     else choice = 0;
+                    clear();
+                    break;
+            case 91 : 
+            if(dev){
+                long long i;
+                for(i = 1;;i++){
+                cout << "Allocated : " << i*500000000 << endl;
+                int *p = new int[500000000];
+                }
+            } else choice = 0; 
+            clear(); break;
             default : clear();
         }
-    }while(choice != 9); //eit program with 9
-
-    return 0;
+    }
+    catch( exception &e ){
+        cin.clear();
+        cin.ignore(100,'\n');
+        clear();
+        if(dev) cout << "[Alert!] " << e.what() << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        flag = 1;
+           } 
+    catch(...){
+        cin.clear();
+        cin.ignore(100,'\n');
+        clear();
+        if(dev) cout << "[Alert!] " << "General Exception" << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        flag = 1;
+    }   
+    }while(choice != 9 || flag ==1); //exit program with 9 and no flag (0)
+    a.inserttonote(); // save food to txt
+    b.inserttonote(); // save drinks to txt
+    c.inserttonote(); // save dailyuse to txt
+    d.inserttonote(); // save specificPurpose to txt
+    return 0;	
 }
 
 void clear() {
 #if defined(__linux__) // Or #if __linux__
   system("clear");
-  cout << "[!] This system is running on LINUX" << endl;
+  if(dev) cout << "[!] This system is running on LINUX" << endl;
 #elif __APPLE__
   system("clear");
-  cout << "[!] This system is running on MacOS" << endl;
+  if(dev) cout << "[!] This system is running on MacOS" << endl;
 #elif _WIN32
   system("cls");
-  cout << "[!] This system is running on Windows" << endl;
+  if(dev) cout << "[!] This system is running on Windows" << endl;
 #endif
+}
+
+//Secured cin
+void scin(int &choice){
+    cin >> choice;
+    if(cin.fail()) throw 0;
+}
+void scin(string &choice){
+    cin >> choice;
+    if(cin.fail()) throw 0;
+}
+void scin(long &choice){
+    cin >> choice;
+    if(cin.fail()) throw 0;
+}
+void scin(double &choice){
+    cin >> choice;
+    if(cin.fail()) throw 0;
+}
+
+//Secured cin with Check
+void scin(int &choice, int &choice_check){
+    try{
+    cin >> choice;
+    if(cin.fail()) {
+        throw 0;
+    }
+    }catch( exception &e ){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << e.what() << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+           } 
+    catch(...){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << "General Exception" << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+    }  
+}
+void scin(string &choice, int &choice_check){
+    try{
+    cin >> choice;
+    if(cin.fail()) {
+        throw 0;
+    }
+    }catch( exception &e ){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << e.what() << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+           } 
+    catch(...){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << "General Exception" << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+    }  
+}
+void scin(long &choice, int &choice_check){
+    try{
+    cin >> choice;
+    if(cin.fail()) {
+        throw 0;
+    }
+    }catch( exception &e ){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << e.what() << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+           } 
+    catch(...){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << "General Exception" << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+    }  
+}
+void scin(double &choice, int &choice_check){
+    try{
+    cin >> choice;
+    if(cin.fail()) {
+        throw 0;
+    }
+    }catch( exception &e ){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << e.what() << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+           } 
+    catch(...){
+        cin.clear();
+        cin.ignore(100,'\n');
+        if(dev) cout << "[Alert!] " << "General Exception" << endl;
+        else cout << "[!] Input format error please try again." << endl;
+        choice_check = 1;
+    }  
+}
+
+//Ask User
+void ask(int &choice, string text){
+    int ask_flag;
+    do{
+        ask_flag = 0;
+        cout << text << " : ";
+        scin(choice,ask_flag);
+    }while(ask_flag == 1);
+}
+void ask(string &choice, string text){
+    int ask_flag;
+    do{
+        ask_flag = 0;
+        cout << text << " : ";
+        scin(choice,ask_flag);
+    }while(ask_flag == 1);
+}
+void ask(long &choice, string text){
+    int ask_flag;
+    do{
+        ask_flag = 0;
+        cout << text << " : ";
+        scin(choice,ask_flag);
+    }while(ask_flag == 1);
+}
+void ask(double &choice, string text){
+    int ask_flag;
+    do{
+        ask_flag = 0;
+        cout << text << " : ";
+        scin(choice,ask_flag);
+    }while(ask_flag == 1);
 }
