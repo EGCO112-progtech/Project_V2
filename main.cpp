@@ -152,8 +152,7 @@ if(dev) cout << "--> 92 : Try remove ALL stock files" << endl;
                     s = new specificPurpose(name,mfg,expire,LotNo,Usefor,weightAll,quantityContainer,quantityEach,details);  d.add_node(s); 
                 }
                 RS.close();
-                if(RF.fail() || RD.fail() || RDA.fail() || RS.fail()){ cout << "[!] Files can't be loaded." << endl;}
-                else cout << "[!] Data has been loaded." << endl;
+                cout << "[!] Data has been loaded." << endl;
                 break;
             case 2 : //Showall
                     clear();
